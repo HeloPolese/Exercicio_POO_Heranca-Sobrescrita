@@ -3,7 +3,7 @@ import { Conta } from "./Conta.js";
 export class Poupanca extends Conta {
     #rendimento;
    
-    constructor(cliente, saldo = 0.0, rendimento = 0.0) {
+    constructor(cliente, saldo = 0, rendimento = 0) {
         super (cliente, saldo);
         this.rendimento = rendimento;
     }
@@ -12,17 +12,17 @@ export class Poupanca extends Conta {
         return this.#rendimento;
     }
     set rendimento(valor) {
-        if (valor < 0.0) {
-            this.#rendimento = 0.0;
+        if (valor < 0) {
+            this.#rendimento = 0;
         } else {
             this.#rendimento = valor;
         }
     }
 
-    viraMes(taxaRendimento){ //porcentagem do rendimento do saldo, DEVER SER PARAMETRO???
+    viraMes(taxaRendimento){ 
         if (taxaRendimento >= 0 && taxaRendimento != null) {
                  this.#rendimento += super.saldo * (taxaRendimento/100);
-        } 
+        } console.log("taxa de rendimento sobre o saldo foi adicionada a poupança!");
     }
     
     toString() {

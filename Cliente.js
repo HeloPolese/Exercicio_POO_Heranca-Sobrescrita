@@ -1,25 +1,25 @@
 import { Pessoa } from "./Pessoa.js";
 
 export class Cliente extends Pessoa {
-    #pontucaoFidelidade;
+    #pontuacaoFidelidade;
     #limiteCredito;
-    #categoria; //COMUM, VIP, PCD
+    #categoria; 
 
     constructor(nome, cpf, dtNasc, pontuacaoFidelidade = 0, limiteCredito = 100.0, categoria = "COMUM") {
-        super(nome, cpf, dtNasc);
+        super(nome, cpf, dtNasc);//acessa o constructor de pessoa passando os parametros
         this.pontucaoFidelidade = pontuacaoFidelidade;
         this.limiteCredito = limiteCredito;
         this.categoria = categoria.toUpperCase();
     }
 
-    get pontucaoFidelidade() {
-        return this.#pontucaoFidelidade;
+    get pontuacaoFidelidade() {
+        return this.#pontuacaoFidelidade;
     }
-    set pontucaoFidelidade(novaPontuacao) {
+    set pontuacaoFidelidade(novaPontuacao) {
         if (novaPontuacao >= 0) {
-            this.#pontucaoFidelidade = novaPontuacao;
-        } else if (this.#pontucaoFidelidade == undefined) {
-            this.#pontucaoFidelidade = 0;
+            this.#pontuacaoFidelidade = novaPontuacao;
+        } else if (this.#pontuacaoFidelidade == undefined) {
+            this.#pontuacaoFidelidade = 0;
         }
     }
 
@@ -28,10 +28,10 @@ export class Cliente extends Pessoa {
     }
 
     set limiteCredito(novoLimite) {
-        if (novoLimite >= 0.0) {
+        if (novoLimite >= 0) {
             this.#limiteCredito = novoLimite;
         } else if (this.#limiteCredito == undefined) {
-            this.#limiteCredito = 100.0;
+            this.#limiteCredito = 100;
         }
     }
 
@@ -39,8 +39,10 @@ export class Cliente extends Pessoa {
         return this.#categoria;
     }
 
-    set categoria(novaCategoria) {
-        if (novaCategoria == "COMUM" || novaCategoria == "VIP" || novaCategoria == "PCD") {
+    set categoria(novaCategoria) { //como são so tres optei por nao criar um let que guardasse novaCategoria.toUpperCase()
+        if (novaCategoria.toUpperCase() == "COMUM" ||
+            novaCategoria.toUpperCase() == "VIP" ||
+            novaCategoria.toUpperCase() == "PCD") {
             this.#categoria = novaCategoria;
         } else if (this.#categoria == undefined) {
             this.#categoria = "COMUM";
@@ -49,8 +51,8 @@ export class Cliente extends Pessoa {
 
     toString() {
         return (super.toString() +
-            "\nPontuação Fidelidade: " + this.#pontucaoFidelidade +
+            "\nPontuação Fidelidade: " + this.#pontuacaoFidelidade +
             "\nLimite de Crédito: " + this.#limiteCredito.toFixed(2) +
-            "\nCategoria: " + this.#categoria);
+            "\nCategoria do Cliente: " + this.#categoria);
     }
 }
