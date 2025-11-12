@@ -2,7 +2,6 @@ import {Funcionario} from "./Funcionario.js";
 import {Cliente} from "./Cliente.js";
 
 let func = new Funcionario("12345", "Rivaldo", "123.456.789-12", "01/01/2001", 1200.00);
-//Executando no debug, observe como funciona o método constructor da classe Funcionario
 
 console.log (func);
 

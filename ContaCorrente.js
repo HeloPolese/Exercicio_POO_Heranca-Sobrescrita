@@ -68,11 +68,11 @@ export class ContaCorrente extends Conta {
     }
 
     depositar(valor) {
-        if (valor > 0.00) {
-            if (this.#saldoDevedor > 0.00) {
+        if (valor > 0) {
+            if (this.#saldoDevedor > 0) {
                 if (valor > this.#saldoDevedor) {
                     valor -= this.#saldoDevedor;
-                    this.#saldoDevedor = 0.00;
+                    this.#saldoDevedor = 0;
                     super.depositar(valor);
                 } else {
                     this.#saldoDevedor -= valor;
@@ -88,11 +88,11 @@ export class ContaCorrente extends Conta {
     viraMes() {
         if ((super.saldo - this.tarifa) < 0) {
             this.#saldoDevedor += this.tarifa;
-        } else {
+        }else {
             super.saldo -= this.tarifa;
         }
         if (this.#saldoDevedor > 0) {
-            this.#saldoDevedor += this.#saldoDevedor * (this.#juros / 100); //multiplica o que deve pelo juro
+            this.#saldoDevedor += this.#saldoDevedor * (this.#juros / 100); 
         }
     }
 
@@ -104,4 +104,5 @@ export class ContaCorrente extends Conta {
             "\nJuros = " + this.#juros.toFixed(2) + "%");
     }
 }
+
 
