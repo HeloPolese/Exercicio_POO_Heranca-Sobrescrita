@@ -3,7 +3,7 @@ import { Pessoa } from "./Pessoa.js";
 export class Funcionario extends Pessoa {
     #matricula;
     #salario;
-    constructor(matricula, nome, cpf, dtNasc, salario = 0.0) {
+    constructor(matricula, nome, cpf, dtNasc, salario = 0) {
         super(nome, cpf, dtNasc);
         this.#matricula = matricula;
         this.#salario = salario;
@@ -17,7 +17,7 @@ export class Funcionario extends Pessoa {
         return this.#salario;
     }
     set salario(salario){
-        if(salario > 0.0){
+        if(salario > 0){
             this.#salario = salario;
         }
     }

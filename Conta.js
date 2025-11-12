@@ -5,9 +5,9 @@ export class Conta {
     #titular;
     #saldo;
     #id;
-    constructor(cliente, saldo = 0.0) {
+    constructor(cliente, saldo = 0) {
         this.titular = cliente; //ATENÇÃO: chama o método set titular
-        if (saldo < 0.0) {
+        if (saldo < 0) {
             this.#saldo = 0;
         } else {
             this.#saldo = saldo;
@@ -15,7 +15,8 @@ export class Conta {
         Conta.#qtContas++;
         this.#id = ""+ new Date().getFullYear() + Conta.#qtContas;
     }
-
+    
+    
     static get qtContas() {
         return Conta.#qtContas;
     }
@@ -37,15 +38,15 @@ export class Conta {
     }
 
     sacar(valor) {
-        if (valor > 0.00 && valor <= this.#saldo) {
+        if (valor > 0 && valor <= this.#saldo) {
             this.#saldo -= valor;
             return true;
         }
         return false;
     }
 
-    depositar(valor) {
-        if (valor > 0.00){
+    depositar(valor) { //verifica so se o valor e maior que zero e deposita
+        if (valor > 0){
             this.#saldo += valor;
             return true;
         }
