@@ -21,7 +21,9 @@ export class Poupanca extends Conta {
 
     viraMes(taxaRendimento){ //porcentagem do rendimento do saldo, DEVER SER PARAMETRO???
         if (taxaRendimento >= 0 && taxaRendimento != null) {
-                 this.#rendimento += super.saldo * (taxaRendimento/100);
+                 let rendimento = super.saldo * (taxaRendimento/100);
+                 this.#rendimento += rendimento;
+                 super.depositar(rendimento);
         } 
     }
     
