@@ -20,19 +20,19 @@ let contaPoupanca1 = new Poupanca(cli3, 200, 0.0);
 let contas = [corrente1, corrente2, contaPoupanca1];
 
 
-/* Exibe os clientes do banco
+// Exibe os clientes do banco
 console.log("=== Clientes do Banco ===");
 for (let i = 0; i < clientes.length; i++) {
   console.log(clientes[i].toString());
 }
-console.log("-----------------------"); */
+console.log("-----------------------");
 
-/* Exibe as contas do banco
+// Exibe as contas do banco
 console.log("=== Contas do Banco ===");
 for (let i = 0; i < contas.length; i++) {
   console.log(contas[i].toString());
   console.log("-----------------------");
-} */
+}
 
 console.log("=== Situação inicial ===");
 for (let i = 0; i < contas.length; i++) {
