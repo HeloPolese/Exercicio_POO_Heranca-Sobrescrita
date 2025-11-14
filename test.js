@@ -54,5 +54,15 @@ for (let i = 0; i < contas.length; i++) {
   console.log("-----------------------");
 }
 
+function procurarCliente(nome) {
+    let cliente = clientes.find(objCliente => objCliente.nome == nome); // acessa o atributo nome da classe CLiente
+    if (cliente != undefined) {
+        console.log("Clinte encontrado\n" + cliente.toString());
+    } else{
+        console.log("Cliente não encontrado!");
+    }
+}
+
+console.log(procurarCliente("Heloisa"));
 
 
