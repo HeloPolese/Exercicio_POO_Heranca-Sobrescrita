@@ -87,21 +87,23 @@ export class ContaCorrente extends Conta {
         return false;
     }
 
-    viraMes() { //pelo que pesquisei não há o que retornar aqui, somente se eu adicionar uma msg de console
-        if ((super.saldo - this.tarifa) < 0) {
+      viraMes() {
+    if (this.tarifa > 0) {
+        // tenta descontar a tarifa
+        if (!this.sacar(this.tarifa)) {
+            // se não tiver saldo suficiente, vira saldo devedor
             this.#saldoDevedor += this.tarifa;
-        } else {
-            super.saldo -= this.tarifa;
         }
-        if (this.#saldoDevedor > 0) {
-            this.#saldoDevedor += this.#saldoDevedor * (this.#juros / 100);
-        }
-
     }
+    // aplica juros sobre saldo devedor, se houver
+    if (this.#saldoDevedor > 0) {
+        this.#saldoDevedor += this.#saldoDevedor * (this.#juros / 100);
+    }
+}
 
     toString() {
         return (super.toString() +
-            "\nSaldo = R$" + (this.saldo()).toFixed(2) + //acessa o get saldo da classe Conta
+            "\nSaldo = R$" + (this.saldo()).toFixed(2) + //acessa o get saldo da classe Pessoa
             "\nTarifa = R$" + this.#tarifa.toFixed(2) +
             "\nLimite de Crédito = R$" + this.#limiteCredito.toFixed(2) +
             "\nJuros = " + this.#juros.toFixed(2) + "%");

@@ -7,9 +7,7 @@ export class Pessoa {
         this.#cpf = cpf;
         this.#dtNascimento = dtNasc;
     }
-    /*... as implementações dos métodos get e set seguem
-    os códigos mostrados anteriormente para a classe Cliente
-    */
+    
 
     get nome(){
         return this.#nome;

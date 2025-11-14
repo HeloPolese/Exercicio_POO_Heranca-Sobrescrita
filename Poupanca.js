@@ -22,7 +22,8 @@ export class Poupanca extends Conta {
     viraMes(taxaRendimento){ 
         if (taxaRendimento >= 0 && taxaRendimento != null) {
                  this.#rendimento += super.saldo * (taxaRendimento/100);
-        } console.log("taxa de rendimento sobre o saldo foi adicionada a poupança!");
+                 super.depositar(rendimento);
+        }
     }
     
     toString() {
