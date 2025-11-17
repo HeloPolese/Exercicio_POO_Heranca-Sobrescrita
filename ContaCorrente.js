@@ -87,18 +87,20 @@ export class ContaCorrente extends Conta {
 
     viraMes() {
     if (this.tarifa > 0) {
-        // tenta descontar a tarifa
-        if (!this.sacar(this.tarifa)) {
-            // se não tiver saldo suficiente, vira saldo devedor
+
+        if (this.sacar(this.tarifa)) {
+            
+        } else {
             this.#saldoDevedor += this.tarifa;
         }
     }
 
-    // aplica juros sobre saldo devedor, se houver
     if (this.#saldoDevedor > 0) {
         this.#saldoDevedor += this.#saldoDevedor * (this.#juros / 100);
     }
 }
+
+
 
 
     toString() {
@@ -109,5 +111,3 @@ export class ContaCorrente extends Conta {
             "\nJuros = " + this.#juros.toFixed(2) + "%");
     }
 }
-
-
