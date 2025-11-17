@@ -86,7 +86,19 @@ export class ContaCorrente extends Conta {
     }
 
     viraMes() {
-    if (this.tarifa > 0) {
+        if (this.#saldoDevedor > 0) {
+        this.#saldoDevedor += this.#saldoDevedor * (this.#juros / 100);
+    }
+
+    if(this.tarifa > super.saldo){
+        let tarifaRestante = this.tarifa - super.saldo;
+        super.sacar(super.saldo);
+        this.#saldoDevedor += tarifaRestante;
+    } else {
+        super.sacar(this.tarifa);
+    }
+
+    /*if (this.tarifa > 0) {
 
         if (this.sacar(this.tarifa)) {
             
@@ -97,7 +109,7 @@ export class ContaCorrente extends Conta {
 
     if (this.#saldoDevedor > 0) {
         this.#saldoDevedor += this.#saldoDevedor * (this.#juros / 100);
-    }
+    }*/
 }
 
 

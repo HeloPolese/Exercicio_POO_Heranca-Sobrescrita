@@ -50,7 +50,6 @@ export class Cliente extends Pessoa {
     toString() {
         return (super.toString() +
             "\nPontuação Fidelidade: " + this.#pontucaoFidelidade +
-            "\nLimite de Crédito: " + this.#limiteCredito.toFixed(2) +
             "\nCategoria: " + this.#categoria);
     }
 }

@@ -5,7 +5,7 @@ import {ContaCorrente} from "./ContaCorrente.js";
 import {Poupanca} from "./Poupanca.js";
 
 
-let cli1 = new Cliente("Roberto Carlos", "987.654.321-00", "02/02/2002", 200, 150, "COMUM");
+let cli1 = new Cliente("Roberto Carlos", "987.654.321-00", "02/02/2002", 200, "COMUM");
 let cli2 = new Cliente("Zico", "654.321.987-11", "03/03/1953", 500, 200.0, "VIP");
 let cli3 = new Cliente("Heloisa", "653.271.087-81", "07/07/2005", 900, 100, "PCD");
 
@@ -13,9 +13,9 @@ let clientes = [cli1,cli2,cli3];
 
 
 //cliente com conta corrente e poupança 
-let corrente1 = new ContaCorrente(cli1, 1000.0, 10.0, 300, 5.0);
+let corrente1 = new ContaCorrente(cli1, 500.0, 50.0, 30.0, 5.0);
 let corrente2 = new ContaCorrente(cli2, 500.0, 5.0, 500.0, 3.0);
-let contaPoupanca1 = new Poupanca(cli3, 200, 0.0);
+let contaPoupanca1 = new Poupanca(cli3, 200, 5.0);
 
 let contas = [corrente1, corrente2, contaPoupanca1];
 
@@ -44,7 +44,7 @@ for (let i = 0; i < contas.length; i++) {
 // Executa o método viraMes() para cada conta
 console.log("=== Executando viraMes ===");
 for (let i = 0; i < contas.length; i++) {
-  contas[i].viraMes(1.0); 
+  contas[i].viraMes(); 
 }
 
 // Mostrar estado após a operação
@@ -57,7 +57,7 @@ for (let i = 0; i < contas.length; i++) {
 function procurarCliente(nome) {
     let cliente = clientes.find(objCliente => objCliente.nome == nome); // acessa o atributo nome da classe CLiente
     if (cliente != undefined) {
-        console.log("Clinte encontrado\n" + cliente.toString());
+        console.log("Cliente encontrado\n" + cliente.toString());
     } else{
         console.log("Cliente não encontrado!");
     }
@@ -65,4 +65,6 @@ function procurarCliente(nome) {
 
 console.log(procurarCliente("Heloisa"));
 
+// Transferir de CC para Poupanca
+contas[1].transferir(50.00, contas[2]);
 
